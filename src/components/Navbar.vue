@@ -1,6 +1,10 @@
+
+<!-- 
 <script>
   import { ref } from 'vue';
+
   export default {
+
     setup() {
       let showMenu = ref(false);
       const toggleNav = () => (showMenu.value = !showMenu.value);
@@ -18,11 +22,18 @@
       },
     },
   };
+</script> -->
+
+<script setup>
+  import { ref } from 'vue';
+  import Btn from './elements/button.vue'; // Cambiado a Btn para seguir las convenciones de nomenclatura de Vue
+
+  let showMenu = ref(false);
+  const toggleNav = () => (showMenu.value = !showMenu.value);
 </script>
 
-
 <template>
-    <div class="bg-indigo-600">
+    <div class="bg--600">
       <nav
         class="
           container
@@ -33,19 +44,9 @@
         "
       >
         <div class="flex items-center justify-between">
-          <router-link
-            to="/"
-            class="
-              text-xl
-              font-bold
-              text-gray-100
-              md:text-2xl
-              hover:text-indigo-400
-            "
-            >Logo
-          </router-link>
+          <img src="../assets/images/logo.jpg" alt=""  width="100" height="120"/>
           <!-- Mobile menu button -->
-          <div @click="mostrar" class="flex md:hidden">
+          <div @click="toggleNav" class="flex md:hidden">
             <button
               type="button"
               class="
@@ -72,12 +73,14 @@
             mt-8
             space-y-4
             md:flex md:space-y-0 md:flex-row md:items-center md:space-x-10 md:mt-0
-          "
+            justify-center 
+            text-center
+            "
         >
-          <li class="text-gray-100 hover:text-indigo-400">Home</li>
-          <li class="text-gray-100 hover:text-indigo-400">About</li>
-          <li class="text-gray-100 hover:text-indigo-400">Blogs</li>
-          <li class="text-gray-100 hover:text-indigo-400">Contact Us</li>
+          <li class="text-gray-100 hover:text-indigo-400"><a href="">Inicio</a></li>
+          <li class="text-gray-100 hover:text-indigo-400">Cursos</li>
+          <li class="text-gray-100 hover:text-indigo-400">Contacto</li>
+          <li> <btn/> </li>
         </ul>
       </nav>
     </div>

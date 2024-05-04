@@ -30,21 +30,46 @@
 
   let showMenu = ref(false);
   const toggleNav = () => (showMenu.value = !showMenu.value);
+
+  
 </script>
 
+<script>
+
+  export default {
+    methods: {
+      scrollToSection(sectionId) {
+        const section = document.querySelector(sectionId);
+        if (section) {
+          window.scrollTo({
+            top: section.offsetTop,
+            behavior: 'smooth' // Efecto de desplazamiento suave
+          });
+        }
+      }
+    }
+  }
+
+</script>
+
+
 <template>
-    <div class="bg--600">
+  <div class="fixed top-0 w-full z-10">
+    <div class="bg-transparent">
       <nav
         class="
           container
           px-6
-          py-8
+          py-2
           mx-auto
           md:flex md:justify-between md:items-center
+          font-sans font-bold
         "
       >
         <div class="flex items-center justify-between">
-          <img src="../assets/images/logo.jpg" alt=""  width="100" height="120"/>
+          <button @click="scrollToSection('#inicio')"> 
+            <img src="../assets/images/logo2.png" alt=""  width="120" height="120"/>
+          </button>
           <!-- Mobile menu button -->
           <div @click="toggleNav" class="flex md:hidden">
             <button
@@ -77,12 +102,13 @@
             text-center
             "
         >
-          <li class="text-gray-100 hover:text-indigo-400"><a href="">Inicio</a></li>
-          <li class="text-gray-100 hover:text-indigo-400">Cursos</li>
-          <li class="text-gray-100 hover:text-indigo-400">Contacto</li>
+          <button><li class="text-gray-100 hover:text-indigo-400" @click="scrollToSection('#inicio')">Inicio</li></button>
+          <button> <li class="text-gray-100 hover:text-indigo-400" @click="scrollToSection('#cursos')">Cursos</li></button>
+          <button><li class="text-gray-100 hover:text-indigo-400" @click="scrollToSection('#contacto')">Contacto</li></button>
           <li> <btn/> </li>
         </ul>
       </nav>
     </div>
+  </div>
   </template>
   
